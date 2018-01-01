@@ -43,3 +43,10 @@ config :coherence, PartywaveWeb.Coherence.Mailer,
   adapter: Swoosh.Adapters.Sendgrid,
   api_key: "your api key here"
 # %% End Coherence Configuration %%
+
+# phoenix slime template language
+config :phoenix, :template_engines,
+  slim: PhoenixSlime.Engine,
+  slime: PhoenixSlime.Engine
+
+config :phoenix_slime, :use_slim_extension, true

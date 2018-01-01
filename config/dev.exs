@@ -37,7 +37,7 @@ config :partywave, PartywaveWeb.Endpoint,
       ~r{priv/static/.*(js|css|png|jpeg|jpg|gif|svg)$},
       ~r{priv/gettext/.*(po)$},
       ~r{lib/partywave_web/views/.*(ex)$},
-      ~r{lib/partywave_web/templates/.*(eex)$}
+      ~r{lib/partywave_web/templates/.*(eex|slim|slime)$}
     ]
   ]
 
