@@ -1,0 +1,8 @@
+li.nav-item
+  .nav-link.sign_in_links
+    = link 'Sign in', to: session_path(@conn, :new)
+
+    span.or.text-gray
+      | or
+
+    = link 'Sign up', to: registration_path(@conn, :new)

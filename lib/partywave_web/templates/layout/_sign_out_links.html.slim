@@ -1,0 +1,6 @@
+li.nav-item.dropdown
+  a#navbarDropdown.nav-link.dropdown-toggle[href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"]
+    | Me
+
+  .dropdown-menu[aria-labelledby="navbarDropdown"]
+    = link "log out", to: session_path(@conn, :delete), class: "dropdown-item", method: :delete

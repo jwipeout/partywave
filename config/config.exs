@@ -35,13 +35,12 @@ config :coherence,
   router: PartywaveWeb.Router,
   messages_backend: PartywaveWeb.Coherence.Messages,
   logged_out_url: "/",
-  email_from_name: "Your Name",
-  email_from_email: "yourname@example.com",
+  email_from_name: "Partywave",
+  email_from_email: "help@partywave.io",
   opts: [:authenticatable, :recoverable, :lockable, :trackable, :unlockable_with_token, :confirmable, :registerable]
 
 config :coherence, PartywaveWeb.Coherence.Mailer,
-  adapter: Swoosh.Adapters.Sendgrid,
-  api_key: "your api key here"
+  adapter: Swoosh.Adapters.Local
 # %% End Coherence Configuration %%
 
 # phoenix slime template language
