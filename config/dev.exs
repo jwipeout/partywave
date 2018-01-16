@@ -54,3 +54,7 @@ config :partywave, Partywave.Repo,
   database: "partywave_dev",
   hostname: "localhost",
   pool_size: 10
+
+# Coherence mailer adapter
+config :coherence, PartywaveWeb.Coherence.Mailer,
+  adapter: Swoosh.Adapters.Local

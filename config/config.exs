@@ -38,9 +38,6 @@ config :coherence,
   email_from_name: "Partywave",
   email_from_email: "help@partywave.io",
   opts: [:authenticatable, :recoverable, :lockable, :trackable, :unlockable_with_token, :confirmable, :registerable]
-
-config :coherence, PartywaveWeb.Coherence.Mailer,
-  adapter: Swoosh.Adapters.Local
 # %% End Coherence Configuration %%
 
 # phoenix slime template language
