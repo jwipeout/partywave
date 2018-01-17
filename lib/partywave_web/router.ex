@@ -38,6 +38,7 @@ defmodule PartywaveWeb.Router do
     pipe_through :browser # Use the default browser stack
 
     get "/", PageController, :index
+    resources "/shapers", ShaperController
   end
 
   if Mix.env == :dev do

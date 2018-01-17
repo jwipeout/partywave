@@ -1,0 +1,13 @@
+<h2>Show Shaper</h2>
+
+<ul>
+
+  <li>
+    <strong>Name:</strong>
+    <%= @shaper.name %>
+  </li>
+
+</ul>
+
+<span><%= link "Edit", to: shaper_path(@conn, :edit, @shaper) %></span>
+<span><%= link "Back", to: shaper_path(@conn, :index) %></span>

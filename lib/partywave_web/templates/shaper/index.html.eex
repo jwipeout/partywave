@@ -1,0 +1,26 @@
+<h2>Listing Shapers</h2>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Name</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+<%= for shaper <- @shapers do %>
+    <tr>
+      <td><%= shaper.name %></td>
+
+      <td class="text-right">
+        <span><%= link "Show", to: shaper_path(@conn, :show, shaper), class: "btn btn-default btn-xs" %></span>
+        <span><%= link "Edit", to: shaper_path(@conn, :edit, shaper), class: "btn btn-default btn-xs" %></span>
+        <span><%= link "Delete", to: shaper_path(@conn, :delete, shaper), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %></span>
+      </td>
+    </tr>
+<% end %>
+  </tbody>
+</table>
+
+<span><%= link "New Shaper", to: shaper_path(@conn, :new) %></span>
