@@ -1,0 +1,47 @@
+<%= form_for @changeset, @action, fn f -> %>
+  <%= if @changeset.action do %>
+    <div class="alert alert-danger">
+      <p>Oops, something went wrong! Please check the errors below.</p>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= label f, :shaper_id, class: "control-label" %>
+    <%= select f, :shaper_id, Enum.map(@shapers, &{&1.name, &1.id}), class: "form-control" %>
+    <%= error_tag f, :shaper_id %>
+  </div>
+
+  <div class="form-group">
+    <%= label f, :model, class: "control-label" %>
+    <%= text_input f, :model, class: "form-control" %>
+    <%= error_tag f, :model %>
+  </div>
+
+  <div class="form-group">
+    <%= label f, :length, class: "control-label" %>
+    <%= number_input f, :length, class: "form-control" %>
+    <%= error_tag f, :length %>
+  </div>
+
+  <div class="form-group">
+    <%= label f, :width, class: "control-label" %>
+    <%= number_input f, :width, step: "any", class: "form-control" %>
+    <%= error_tag f, :width %>
+  </div>
+
+  <div class="form-group">
+    <%= label f, :thickness, class: "control-label" %>
+    <%= number_input f, :thickness, step: "any", class: "form-control" %>
+    <%= error_tag f, :thickness %>
+  </div>
+
+  <div class="form-group">
+    <%= label f, :volume, class: "control-label" %>
+    <%= number_input f, :volume, step: "any", class: "form-control" %>
+    <%= error_tag f, :volume %>
+  </div>
+
+  <div class="form-group">
+    <%= submit "Submit", class: "btn btn-primary" %>
+  </div>
+<% end %>

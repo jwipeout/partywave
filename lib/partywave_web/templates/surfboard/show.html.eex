@@ -1,0 +1,33 @@
+<h2>Show Surfboard</h2>
+
+<ul>
+
+  <li>
+    <strong>Model:</strong>
+    <%= @surfboard.model %>
+  </li>
+
+  <li>
+    <strong>Length:</strong>
+    <%= @surfboard.length %>
+  </li>
+
+  <li>
+    <strong>Width:</strong>
+    <%= @surfboard.width %>
+  </li>
+
+  <li>
+    <strong>Thickness:</strong>
+    <%= @surfboard.thickness %>
+  </li>
+
+  <li>
+    <strong>Volume:</strong>
+    <%= @surfboard.volume %>
+  </li>
+
+</ul>
+
+<span><%= link "Edit", to: surfboard_path(@conn, :edit, @surfboard) %></span>
+<span><%= link "Back", to: surfboard_path(@conn, :index) %></span>

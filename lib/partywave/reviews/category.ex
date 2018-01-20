@@ -1,10 +1,10 @@
-defmodule Partywave.Reviews.Shaper do
+defmodule Partywave.Reviews.Category do
   use Ecto.Schema
   import Ecto.Changeset
-  alias Partywave.Reviews.Shaper
+  alias Partywave.Reviews.Category
 
 
-  schema "shapers" do
+  schema "categories" do
     field :name, :string
 
     has_many :surfboards, Partywave.Reviews.Surfboard
@@ -13,8 +13,8 @@ defmodule Partywave.Reviews.Shaper do
   end
 
   @doc false
-  def changeset(%Shaper{} = shaper, attrs) do
-    shaper
+  def changeset(%Category{} = category, attrs) do
+    category
     |> cast(attrs, [:name])
     |> validate_required([:name])
   end

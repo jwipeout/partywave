@@ -39,6 +39,8 @@ defmodule PartywaveWeb.Router do
 
     get "/", PageController, :index
     resources "/shapers", ShaperController
+    resources "/categories", CategoryController
+    resources "/surfboards", SurfboardController
   end
 
   if Mix.env == :dev do

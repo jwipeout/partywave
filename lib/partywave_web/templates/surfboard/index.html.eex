@@ -1,0 +1,36 @@
+<h2>Listing Surfboards</h2>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Shaper</th>
+      <th>Model</th>
+      <th>Length</th>
+      <th>Width</th>
+      <th>Thickness</th>
+      <th>Volume</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+<%= for surfboard <- @surfboards do %>
+    <tr>
+      <td><%= surfboard.shaper.name %></td>
+      <td><%= surfboard.model %></td>
+      <td><%= surfboard.length %></td>
+      <td><%= surfboard.width %></td>
+      <td><%= surfboard.thickness %></td>
+      <td><%= surfboard.volume %></td>
+
+      <td class="text-right">
+        <span><%= link "Show", to: surfboard_path(@conn, :show, surfboard), class: "btn btn-default btn-xs" %></span>
+        <span><%= link "Edit", to: surfboard_path(@conn, :edit, surfboard), class: "btn btn-default btn-xs" %></span>
+        <span><%= link "Delete", to: surfboard_path(@conn, :delete, surfboard), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %></span>
+      </td>
+    </tr>
+<% end %>
+  </tbody>
+</table>
+
+<span><%= link "New Surfboard", to: surfboard_path(@conn, :new) %></span>
