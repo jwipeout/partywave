@@ -1,0 +1,67 @@
+h2
+  | Listing Surfboards
+
+table.table
+  thead
+    tr
+      th
+        | Shaper
+
+      th
+        | Model
+
+      th
+        | Length
+
+      th
+        | Width
+
+      th
+        | Thickness
+
+      th
+        | Volume
+
+      th
+
+  tbody
+    = for surfboard <- @surfboards do
+      tr
+        td
+          = surfboard.shaper.name
+
+        td
+          = surfboard.model
+
+        td
+          = surfboard.length
+
+        td
+          = surfboard.width
+
+        td
+          = surfboard.thickness
+
+        td
+          = surfboard.volume
+
+        td.text-right
+          span
+            = link "Show",
+            to: surfboard_path(@conn, :show, surfboard),
+            class: "btn btn-default btn-xs"
+
+          span
+            = link "Edit",
+            to: surfboard_path(@conn, :edit, surfboard),
+            class: "btn btn-default btn-xs"
+
+          span
+            = link "Delete",
+            to: surfboard_path(@conn, :delete, surfboard),
+            method: :delete,
+            data: [confirm: "Are you sure?"],
+            class: "btn btn-danger btn-xs"
+
+span
+  = link "New Surfboard", to: surfboard_path(@conn, :new)

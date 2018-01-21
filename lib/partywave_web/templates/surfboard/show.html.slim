@@ -1,0 +1,39 @@
+h2
+  | Show Surfboard
+
+ul
+  li
+    strong
+      | Model:
+
+    = @surfboard.model
+
+  li
+    strong
+      | Length:
+
+    = @surfboard.length
+
+  li
+    strong
+      | Width:
+
+    = @surfboard.width
+
+  li
+    strong
+      | Thickness:
+
+    = @surfboard.thickness
+
+  li
+    strong
+      | Volume:
+
+    = @surfboard.volume
+
+span
+  = link "Edit", to: surfboard_path(@conn, :edit, @surfboard)
+
+span
+  = link "Back", to: surfboard_path(@conn, :index)

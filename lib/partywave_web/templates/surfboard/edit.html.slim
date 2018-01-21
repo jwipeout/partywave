@@ -1,0 +1,9 @@
+h2
+  | Edit Surfboard
+
+= render "form.html",
+Map.put(assigns, :action,
+surfboard_path(@conn, :update, @surfboard))
+
+span
+  = link "Back", to: surfboard_path(@conn, :index)
