@@ -30,7 +30,7 @@
   .form-group
     = label f, :width, class: "control-label"
 
-    = number_input f, :width, step: "any", class: "form-control"
+    = select f, :width_ratio, Partywave.Reviews.Surfboard.width_select, class: "form-control", selected: "2 1/4"
 
     = error_tag f, :width
 
