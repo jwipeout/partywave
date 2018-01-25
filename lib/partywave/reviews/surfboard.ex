@@ -24,6 +24,7 @@ defmodule Partywave.Reviews.Surfboard do
     |> cast(attrs, [:model, :length, :thickness, :volume, :shaper_id, :width_ratio])
     |> validate_required([:model, :length, :thickness, :volume, :width_ratio])
     |> convert_width_ratio_to_inches()
+    |> unique_constraint(:model)
     |> assoc_constraint(:shaper)
   end
 
