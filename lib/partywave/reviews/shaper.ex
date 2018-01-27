@@ -17,5 +17,6 @@ defmodule Partywave.Reviews.Shaper do
     shaper
     |> cast(attrs, [:name])
     |> validate_required([:name])
+    |> unique_constraint(:name)
   end
 end

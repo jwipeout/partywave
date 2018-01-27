@@ -14,6 +14,16 @@
     = error_tag f, :shaper_id
 
   .form-group
+    = label f, :category_id, class: "control-label"
+
+    = select f,
+    :category_id,
+    Enum.map(@categories, &{&1.name, &1.id}),
+    class: "form-control"
+
+    = error_tag f, :category_id
+
+  .form-group
     = label f, :model, class: "control-label"
 
     = text_input f, :model, class: "form-control"
@@ -21,28 +31,37 @@
     = error_tag f, :model
 
   .form-group
-    = label f, :length, class: "control-label"
+    = label f, "length(feet/inches)", class: "control-label"
 
-    = number_input f, :length, class: "form-control"
+    = select f,
+    :length_feet,
+    length_select,
+    class: "form-control"
 
     = error_tag f, :length
 
   .form-group
-    = label f, :width, class: "control-label"
+    = label f, "Width(inches)", class: "control-label"
 
-    = select f, :width_ratio, Partywave.Reviews.Surfboard.width_select, class: "form-control", selected: "2 1/4"
+    = select f,
+    :width_ratio,
+    width_select,
+    class: "form-control"
 
-    = error_tag f, :width
-
-  .form-group
-    = label f, :thickness, class: "control-label"
-
-    = select f, :thickness, Partywave.Reviews.Surfboard.thickness_select, class: "form-control"
-
-    = error_tag f, :thickness
+    = error_tag f, :width_ratio
 
   .form-group
-    = label f, :volume, class: "control-label"
+    = label f, "Thickness(inches)", class: "control-label"
+
+    = select f,
+    :thickness_ratio,
+    thickness_select,
+    class: "form-control"
+
+    = error_tag f, :thickness_ratio
+
+  .form-group
+    = label f, "Volume(liters)", class: "control-label"
 
     = number_input f, :volume, step: "any", class: "form-control"
 

@@ -4,7 +4,7 @@ defmodule Partywave.Repo.Migrations.CreateSurfboards do
   def change do
     create table(:surfboards) do
       add :model, :string
-      add :length, :float
+      add :length, :integer
       add :width, :float
       add :thickness, :float
       add :volume, :float

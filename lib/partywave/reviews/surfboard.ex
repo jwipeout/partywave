@@ -5,9 +5,11 @@ defmodule Partywave.Reviews.Surfboard do
 
 
   schema "surfboards" do
-    field :length, :float
+    field :length, :integer
+    field :length_feet, :string, virtual: true
     field :model, :string
     field :thickness, :float
+    field :thickness_ratio, :string, virtual: true
     field :volume, :float
     field :width, :float
     field :width_ratio, :string, virtual: true
@@ -21,11 +23,43 @@ defmodule Partywave.Reviews.Surfboard do
   @doc false
   def changeset(%Surfboard{} = surfboard, attrs) do
     surfboard
-    |> cast(attrs, [:model, :length, :thickness, :volume, :shaper_id, :width_ratio])
-    |> validate_required([:model, :length, :thickness, :volume, :width_ratio])
+    |> cast(attrs, [:model, :length_feet, :volume, :shaper_id, :width_ratio, :category_id, :thickness_ratio])
+    |> validate_required([:model, :length_feet, :volume, :width_ratio, :shaper_id, :category_id, :thickness_ratio])
+    |> convert_length_feet_to_inches()
     |> convert_width_ratio_to_inches()
+    |> convert_thickness_ratio_to_inches()
     |> unique_constraint(:model)
     |> assoc_constraint(:shaper)
+    |> assoc_constraint(:category)
+  end
+
+  def convert_length_feet_to_inches(changeset) do
+    length_feet = get_field(changeset, :length_feet)
+
+    cond do
+      length_feet ->
+        length_inches = convert_feet_to_inches(length_feet)
+        put_change(changeset, :length, length_inches)
+
+      true ->
+        changeset
+    end
+  end
+
+  def convert_feet_to_inches(feet_string) do
+    cond do
+      String.split(feet_string, " ")
+      |> length() == 1 ->
+        [feet, feet_prime] = String.split(feet_string, "'")
+        String.to_integer(feet) * 12
+
+      true ->
+        [feet_split, inches_split] = String.split(feet_string, " ")
+        [feet, feet_prime] = String.split(feet_split, "'")
+        feet_integer = String.to_integer(feet)
+        inches_integer = String.to_integer(inches_split)
+        (feet_integer * 12) + inches_integer
+    end
   end
 
   def convert_width_ratio_to_inches(changeset) do
@@ -41,44 +75,32 @@ defmodule Partywave.Reviews.Surfboard do
     end
   end
 
+  def convert_thickness_ratio_to_inches(changeset) do
+    thickness_ratio = get_field(changeset, :thickness_ratio)
+
+    cond do
+      thickness_ratio ->
+        thickness_inches = convert_ratio_to_inches(thickness_ratio)
+        put_change(changeset, :thickness, thickness_inches)
+
+      true ->
+        changeset
+    end
+  end
+
   def convert_ratio_to_inches(ratio_string) do
-    [whole_number, ratio] = String.split(ratio_string, " ")
-    [numerator, denominator] = String.split(ratio, "/")
-    whole_number_integer = String.to_integer(whole_number)
-    numerator_integer = String.to_integer(numerator)
-    denominator_integer = String.to_integer(denominator)
-    whole_number_integer + (numerator_integer / denominator_integer)
-  end
+    cond do
+      String.split(ratio_string, " ")
+      |> length() == 1 ->
+        String.to_float("#{ratio_string}.0")
 
-  def inches_decimal_to_ratio(decimal) do
-    inches_string = Float.to_string(decimal)
-    [whole_number, ratio] = String.split(inches_string, ".")
-    ratio_to_float = String.to_float("0.#{ratio}")
-    {numerator, denominator} = Float.ratio(ratio_to_float)
-    "#{whole_number} #{numerator}/#{denominator}"
-  end
-
-  def width_select do
-    ["2 1/8", "2 1/4"]
-  end
-
-  def thickness_select do
-    [
-      2.0625,
-      2.125,
-      2.1875,
-      2.25,
-      2.3125,
-      2.375,
-      2.4375,
-      2.5,
-      2.5625,
-      2.625,
-      2.6875,
-      2.75,
-      2.8125,
-      2.9375
-    ] |>
-      Enum.map(&({inches_decimal_to_ratio(&1), &1}))
+      true ->
+        [whole_number, ratio] = String.split(ratio_string, " ")
+        [numerator, denominator] = String.split(ratio, "/")
+        whole_number_integer = String.to_integer(whole_number)
+        numerator_integer = String.to_integer(numerator)
+        denominator_integer = String.to_integer(denominator)
+        whole_number_integer + (numerator_integer / denominator_integer)
+    end
   end
 end

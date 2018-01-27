@@ -6,18 +6,21 @@ defmodule PartywaveWeb.SurfboardController do
 
   def index(conn, _params) do
     surfboards = Reviews.list_surfboards()
-    render(conn, "index.html", surfboards: surfboards)
+    categories = Reviews.list_categories()
+    render(conn, "index.html", surfboards: surfboards, categories: categories)
   end
 
   def new(conn, _params) do
     shapers = Reviews.list_shapers()
+    categories = Reviews.list_categories()
     changeset = Reviews.change_surfboard(%Surfboard{})
 
-    render(conn, "new.html", changeset: changeset, shapers: shapers)
+    render(conn, "new.html", changeset: changeset, shapers: shapers, categories: categories)
   end
 
   def create(conn, %{"surfboard" => surfboard_params}) do
     shapers = Reviews.list_shapers()
+    categories = Reviews.list_categories()
 
     case Reviews.create_surfboard(surfboard_params) do
       {:ok, surfboard} ->
@@ -25,7 +28,7 @@ defmodule PartywaveWeb.SurfboardController do
         |> put_flash(:info, "Surfboard created successfully.")
         |> redirect(to: surfboard_path(conn, :show, surfboard))
       {:error, %Ecto.Changeset{} = changeset} ->
-        render(conn, "new.html", changeset: changeset, shapers: shapers)
+        render(conn, "new.html", changeset: changeset, shapers: shapers, categories: categories)
     end
   end
 
@@ -36,14 +39,16 @@ defmodule PartywaveWeb.SurfboardController do
 
   def edit(conn, %{"id" => id}) do
     shapers = Reviews.list_shapers()
+    categories = Reviews.list_categories()
     surfboard = Reviews.get_surfboard!(id)
     changeset = Reviews.change_surfboard(surfboard)
 
-    render(conn, "edit.html", surfboard: surfboard, changeset: changeset, shapers: shapers)
+    render(conn, "edit.html", surfboard: surfboard, changeset: changeset, shapers: shapers, categories: categories)
   end
 
   def update(conn, %{"id" => id, "surfboard" => surfboard_params}) do
     shapers = Reviews.list_shapers()
+    categories = Reviews.list_categories()
     surfboard = Reviews.get_surfboard!(id)
 
     case Reviews.update_surfboard(surfboard, surfboard_params) do
@@ -52,7 +57,7 @@ defmodule PartywaveWeb.SurfboardController do
         |> put_flash(:info, "Surfboard updated successfully.")
         |> redirect(to: surfboard_path(conn, :show, surfboard))
       {:error, %Ecto.Changeset{} = changeset} ->
-        render(conn, "edit.html", surfboard: surfboard, changeset: changeset, shapers: shapers)
+        render(conn, "edit.html", surfboard: surfboard, changeset: changeset, shapers: shapers, categories: categories)
     end
   end
 

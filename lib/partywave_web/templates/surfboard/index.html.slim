@@ -5,6 +5,9 @@ table.table
   thead
     tr
       th
+        | Category
+
+      th
         | Shaper
 
       th
@@ -28,16 +31,19 @@ table.table
     = for surfboard <- @surfboards do
       tr
         td
+          = surfboard.category.name
+
+        td
           = surfboard.shaper.name
 
         td
           = surfboard.model
 
         td
-          = surfboard.length
+          = inches_to_feet(surfboard.length)
 
         td
-          = surfboard.width
+          = inches_decimal_to_ratio(surfboard.width)
 
         td
           = surfboard.thickness
