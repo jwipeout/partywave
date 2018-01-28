@@ -36,7 +36,8 @@
     = select f,
     :length_feet,
     length_select,
-    class: "form-control"
+    class: "form-control",
+    selected: inches_to_feet(@changeset.data.length)
 
     = error_tag f, :length
 
@@ -46,7 +47,8 @@
     = select f,
     :width_ratio,
     width_select,
-    class: "form-control"
+    class: "form-control",
+    selected: inches_decimal_to_ratio(@changeset.data.width)
 
     = error_tag f, :width_ratio
 
@@ -56,7 +58,8 @@
     = select f,
     :thickness_ratio,
     thickness_select,
-    class: "form-control"
+    class: "form-control",
+    selected: inches_decimal_to_ratio(@changeset.data.thickness)
 
     = error_tag f, :thickness_ratio
 

@@ -1,8 +1,11 @@
-h2
-  | New Surfboard
+.card
+  .card-header
+    h2
+      | New Surfboard
 
-= render "form.html",
-Map.put(assigns, :action, surfboard_path(@conn, :create))
+  .card-body
+    = render "form.html",
+    Map.put(assigns, :action, surfboard_path(@conn, :create))
 
-span
-  = link "Back", to: surfboard_path(@conn, :index)
+    span
+      = link "Back", to: surfboard_path(@conn, :index)

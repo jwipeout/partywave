@@ -80,6 +80,9 @@ defmodule PartywaveWeb.SurfboardView do
     ]
   end
 
+  def inches_decimal_to_ratio(nil) do
+  end
+
   def inches_decimal_to_ratio(decimal) do
     {num, denom} = Float.ratio(decimal)
     inches_string = Float.to_string(decimal)
@@ -94,6 +97,9 @@ defmodule PartywaveWeb.SurfboardView do
         {numerator, denominator} = Float.ratio(ratio_to_float)
         "#{whole_number} #{numerator}/#{denominator}"
     end
+  end
+
+  def inches_to_feet(nil) do
   end
 
   def inches_to_feet(inches) do

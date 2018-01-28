@@ -1,7 +1,6 @@
 nav.navbar.navbar-expand-lg.bg-dark
   .container
-    a.navbar-brand(href="#")
-      | Partywave
+    = link "PartyWave", to: page_path(@conn, :index), class: "navbar-brand"
 
     button.navbar-toggler(type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation")
       span.navbar-toggler-icon
@@ -10,6 +9,9 @@ nav.navbar.navbar-expand-lg.bg-dark
       ul.navbar-nav.mr-auto
         li.nav-item.active
           = link "Home", to: page_path(@conn, :index), class: "nav-link"
+
+        li.nav-item.active
+          = link "Surfboards", to: surfboard_path(@conn, :index), class: "nav-link"
 
       ul.navbar-nav
         = sign_in_links(Coherence.current_user(@conn), @conn)
