@@ -21,8 +21,10 @@ defmodule PartywaveWeb.SurfboardController do
   def create(conn, %{"surfboard" => surfboard_params}) do
     shapers = Reviews.list_shapers()
     categories = Reviews.list_categories()
+    current_user_id_string = Integer.to_string(conn.assigns.current_user.id)
+    surfboard_current_user_params = Map.put(surfboard_params, "user_id", current_user_id_string)
 
-    case Reviews.create_surfboard(surfboard_params) do
+    case Reviews.create_surfboard(surfboard_current_user_params) do
       {:ok, surfboard} ->
         conn
         |> put_flash(:info, "Surfboard created successfully.")

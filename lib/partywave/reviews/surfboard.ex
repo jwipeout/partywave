@@ -16,6 +16,7 @@ defmodule Partywave.Reviews.Surfboard do
 
     belongs_to :category, Partywave.Reviews.Category
     belongs_to :shaper, Partywave.Reviews.Shaper
+    belongs_to :user, Partywave.Coherence.User
 
     timestamps()
   end
@@ -23,14 +24,15 @@ defmodule Partywave.Reviews.Surfboard do
   @doc false
   def changeset(%Surfboard{} = surfboard, attrs) do
     surfboard
-    |> cast(attrs, [:model, :length_feet, :volume, :shaper_id, :width_ratio, :category_id, :thickness_ratio])
-    |> validate_required([:model, :length_feet, :volume, :width_ratio, :shaper_id, :category_id, :thickness_ratio])
+    |> cast(attrs, [:model, :length_feet, :volume, :shaper_id, :user_id, :width_ratio, :category_id, :thickness_ratio])
+    |> validate_required([:model, :length_feet, :volume, :width_ratio, :shaper_id, :user_id, :category_id, :thickness_ratio])
     |> convert_length_feet_to_inches()
     |> convert_width_ratio_to_inches()
     |> convert_thickness_ratio_to_inches()
     |> unique_constraint(:model)
     |> assoc_constraint(:shaper)
     |> assoc_constraint(:category)
+    |> assoc_constraint(:user)
   end
 
   def convert_length_feet_to_inches(changeset) do
