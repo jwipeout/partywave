@@ -2,17 +2,13 @@
   margin-bottom: 20px;
 }
 
-.navbar-brand img {
-  max-height: 100%;
-  image-rendering: crisp-edges;
-}
-
 .navbar-default .navbar-nav > li > a.text-points {
   color: #5cb85c;
 }
 
-.navbar-brand {
-  font-family: 'codeview';
+.navbar .navbar-brand {
+  font-family: "logo";
+  color: #ffffff;
 }
 
 .bg-dark {
