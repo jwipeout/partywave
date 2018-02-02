@@ -28,3 +28,6 @@ npm-debug.log
 
 # env variables
 .env
+
+# arc uploads
+/uploads

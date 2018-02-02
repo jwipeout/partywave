@@ -107,4 +107,8 @@ defmodule PartywaveWeb.SurfboardView do
     rem_inches = rem(inches, 12)
     "#{feet}' #{rem_inches}"
   end
+
+  def main_image(surfboard) do
+    PartywaveWeb.SurfboardImage.url({surfboard.image, surfboard})
+  end
 end

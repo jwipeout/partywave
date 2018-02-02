@@ -1,7 +1,12 @@
-= form_for @changeset, @action, fn f ->
+= form_for @changeset, @action, [multipart: true], fn f ->
   = if @changeset.action do
     .alert.alert-danger
       p Oops, something went wrong! Please check the errors below.
+
+  .form-group
+    = label f, :image, class: "control-label"
+
+    = file_input f, :image, class: "form-control"
 
   .form-group
     = label f, :shaper_id, class: "control-label"

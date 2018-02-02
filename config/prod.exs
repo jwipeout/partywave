@@ -77,3 +77,8 @@ config :partywave, Partywave.Repo,
 config :coherence, PartywaveWeb.Coherence.Mailer,
   adapter: Swoosh.Adapters.Sendgrid,
   api_key: System.get_env("SENDGRID_API_KEY")
+
+# arc file uploading
+config :arc,
+  storage: Arc.Storage.S3, # or Arc.Storage.Local
+  bucket: System.get_env("AWS_S3_BUCKET") # if using Amazon S3

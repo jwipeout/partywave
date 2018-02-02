@@ -4,6 +4,12 @@ h2
 ul
   li
     strong
+      | Image:
+
+    = main_image(@surfboard) |> img_tag()
+
+  li
+    strong
       | Model:
 
     = @surfboard.model

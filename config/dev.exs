@@ -58,3 +58,7 @@ config :partywave, Partywave.Repo,
 # Coherence mailer adapter
 config :coherence, PartywaveWeb.Coherence.Mailer,
   adapter: Swoosh.Adapters.Local
+
+# arc file uploading
+config :arc,
+  storage: Arc.Storage.Local

@@ -1,6 +1,9 @@
 defmodule Partywave.Reviews.Surfboard do
   use Ecto.Schema
+  use Arc.Ecto.Schema
+
   import Ecto.Changeset
+
   alias Partywave.Reviews.Surfboard
 
 
@@ -13,6 +16,7 @@ defmodule Partywave.Reviews.Surfboard do
     field :volume, :float
     field :width, :float
     field :width_ratio, :string, virtual: true
+    field :image, PartywaveWeb.SurfboardImage.Type
 
     belongs_to :category, Partywave.Reviews.Category
     belongs_to :shaper, Partywave.Reviews.Shaper
@@ -25,6 +29,7 @@ defmodule Partywave.Reviews.Surfboard do
   def changeset(%Surfboard{} = surfboard, attrs) do
     surfboard
     |> cast(attrs, [:model, :length_feet, :volume, :shaper_id, :user_id, :width_ratio, :category_id, :thickness_ratio])
+    |> cast_attachments(attrs, [:image])
     |> validate_required([:model, :length_feet, :volume, :width_ratio, :shaper_id, :user_id, :category_id, :thickness_ratio])
     |> convert_length_feet_to_inches()
     |> convert_width_ratio_to_inches()

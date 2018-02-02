@@ -20,7 +20,14 @@ defmodule Partywave.Mixfile do
   def application do
     [
       mod: {Partywave.Application, []},
-      extra_applications: [:logger, :runtime_tools, :coherence]
+      extra_applications: [
+        :logger,
+        :runtime_tools,
+        :coherence,
+        :ex_aws,
+        :hackney,
+        :poison
+      ]
     ]
   end
 
@@ -42,7 +49,13 @@ defmodule Partywave.Mixfile do
       {:gettext, "~> 0.13.1"},
       {:cowboy, "~> 1.0"},
       {:coherence, "~> 0.5"},
-      {:phoenix_slime, "~> 0.9.0"}
+      {:phoenix_slime, "~> 0.9.0"},
+      {:arc, "~> 0.8.0"},
+      {:arc_ecto, "~> 0.7.0"},
+      {:ex_aws, "~> 1.1"},
+      {:hackney, "~> 1.6"},
+      {:poison, "~> 3.1"},
+      {:sweet_xml, "~> 0.6"}
     ]
   end
 
