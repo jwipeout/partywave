@@ -1,6 +1,23 @@
 h2
   | Listing Surfboards
 
+  = for surfboard <- @surfboards do
+    .row
+      .col-md-2
+        = main_image(surfboard) \
+        |> img_tag(class: "img-fluid") \
+        |> link(to: surfboard_path(@conn, :show, surfboard))
+
+      .col-md-10
+        h3
+          = link surfboard.shaper.name,
+          to: surfboard_path(@conn, :show, surfboard)
+
+        h6
+          = link surfboard.model,
+          to: surfboard_path(@conn, :show, surfboard)
+
+
 table.table
   thead
     tr

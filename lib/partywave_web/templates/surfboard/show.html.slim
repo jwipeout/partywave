@@ -1,45 +1,44 @@
-h2
-  | Show Surfboard
+.row
+  .col-md-4
+    = main_image(@surfboard) |> img_tag(class: "img-fluid")
 
-ul
-  li
-    strong
-      | Image:
+  .col-md-8
+    h2
+      | Show Surfboard
 
-    = main_image(@surfboard) |> img_tag()
+    ul
+      li
+        strong
+          | Model:
 
-  li
-    strong
-      | Model:
+        = @surfboard.model
 
-    = @surfboard.model
+      li
+        strong
+          | Length:
 
-  li
-    strong
-      | Length:
+        = @surfboard.length
 
-    = @surfboard.length
+      li
+        strong
+          | Width:
 
-  li
-    strong
-      | Width:
+        = @surfboard.width
 
-    = @surfboard.width
+      li
+        strong
+          | Thickness:
 
-  li
-    strong
-      | Thickness:
+        = @surfboard.thickness
 
-    = @surfboard.thickness
+      li
+        strong
+          | Volume:
 
-  li
-    strong
-      | Volume:
+        = @surfboard.volume
 
-    = @surfboard.volume
+    span
+      = link "Edit", to: surfboard_path(@conn, :edit, @surfboard)
 
-span
-  = link "Edit", to: surfboard_path(@conn, :edit, @surfboard)
-
-span
-  = link "Back", to: surfboard_path(@conn, :index)
+    span
+      = link "Back", to: surfboard_path(@conn, :index)
