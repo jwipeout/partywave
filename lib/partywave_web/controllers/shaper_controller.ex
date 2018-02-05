@@ -4,6 +4,8 @@ defmodule PartywaveWeb.ShaperController do
   alias Partywave.Reviews
   alias Partywave.Reviews.Shaper
 
+  plug Coherence.Authentication.Session, [protected: true] when not action in [:index, :show]
+
   def index(conn, _params) do
     shapers = Reviews.list_shapers()
     render(conn, "index.html", shapers: shapers)

@@ -4,6 +4,8 @@ defmodule PartywaveWeb.CategoryController do
   alias Partywave.Reviews
   alias Partywave.Reviews.Category
 
+  plug Coherence.Authentication.Session, [protected: true] when not action in [:index, :show]
+
   def index(conn, _params) do
     categories = Reviews.list_categories()
     render(conn, "index.html", categories: categories)

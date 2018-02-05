@@ -4,6 +4,9 @@ defmodule PartywaveWeb.SurfboardController do
   alias Partywave.Reviews
   alias Partywave.Reviews.Surfboard
 
+  plug Coherence.Authentication.Session, [protected: true] when not action in [:index, :show]
+  plug PartywaveWeb.CheckAuthorization, %{} when not action in [:index, :show]
+
   def index(conn, _params) do
     surfboards = Reviews.list_surfboards()
     categories = Reviews.list_categories()
