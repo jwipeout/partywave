@@ -28,6 +28,7 @@ defmodule PartywaveWeb.Router do
   scope "/" do
     pipe_through :protected
     coherence_routes :protected
+    resources "/reviews", PartywaveWeb.ReviewController
   end
 
   pipeline :api do

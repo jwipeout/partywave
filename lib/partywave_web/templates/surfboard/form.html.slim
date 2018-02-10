@@ -40,7 +40,7 @@
 
     = select f,
     :length_feet,
-    length_select,
+    length_select(),
     class: "form-control",
     selected: inches_to_feet(@changeset.data.length)
 
@@ -51,7 +51,7 @@
 
     = select f,
     :width_ratio,
-    width_select,
+    width_select(),
     class: "form-control",
     selected: inches_decimal_to_ratio(@changeset.data.width)
 
@@ -62,7 +62,7 @@
 
     = select f,
     :thickness_ratio,
-    thickness_select,
+    thickness_select(),
     class: "form-control",
     selected: inches_decimal_to_ratio(@changeset.data.thickness)
 

@@ -22,6 +22,8 @@ defmodule Partywave.Reviews.Surfboard do
     belongs_to :shaper, Partywave.Reviews.Shaper
     belongs_to :user, Partywave.Coherence.User
 
+    has_many :reviews, Partywave.Reviews.Review
+
     timestamps()
   end
 
@@ -62,7 +64,7 @@ defmodule Partywave.Reviews.Surfboard do
 
       true ->
         [feet_split, inches_split] = String.split(feet_string, " ")
-        [feet, feet_prime] = String.split(feet_split, "'")
+        [feet, _feet_prime] = String.split(feet_split, "'")
         feet_integer = String.to_integer(feet)
         inches_integer = String.to_integer(inches_split)
         (feet_integer * 12) + inches_integer

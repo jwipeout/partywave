@@ -1,0 +1,18 @@
+<h2>Show Review</h2>
+
+<ul>
+
+  <li>
+    <strong>Body:</strong>
+    <%= @review.body %>
+  </li>
+
+  <li>
+    <strong>Rating:</strong>
+    <%= @review.rating %>
+  </li>
+
+</ul>
+
+<span><%= link "Edit", to: review_path(@conn, :edit, @review) %></span>
+<span><%= link "Back", to: review_path(@conn, :index) %></span>

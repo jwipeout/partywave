@@ -13,6 +13,7 @@ defmodule Partywave.Coherence.User do
     coherence_schema()
 
     has_many :surfboards, Partywave.Reviews.Surfboard
+    has_many :reviews, Partywave.Reviews.Review
 
     timestamps()
   end

@@ -4,5 +4,6 @@ alias Partywave.Coherence.User
 alias Partywave.Reviews.{
   Category,
   Shaper,
-  Surfboard
+  Surfboard,
+  Review
 }

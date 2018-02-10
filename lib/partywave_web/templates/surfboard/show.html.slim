@@ -42,3 +42,19 @@
 
     span
       = link "Back", to: surfboard_path(@conn, :index)
+
+.card
+  .card-header
+    h2
+      | New review
+
+  .card-body
+    = render PartywaveWeb.ReviewView, "form.html", Map.put(assigns, :action, review_path(@conn, :create))
+
+= for review <- @reviews do
+  .review_box
+    .row
+      .col-sm-2
+      
+      .col-sm-10
+        = review.user.name

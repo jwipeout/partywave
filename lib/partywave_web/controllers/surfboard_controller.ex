@@ -3,6 +3,7 @@ defmodule PartywaveWeb.SurfboardController do
 
   alias Partywave.Reviews
   alias Partywave.Reviews.Surfboard
+  alias Partywave.Reviews.Review
 
   plug Coherence.Authentication.Session, [protected: true] when not action in [:index, :show]
   plug PartywaveWeb.CheckAuthorization, %{} when not action in [:index, :show]
@@ -38,8 +39,10 @@ defmodule PartywaveWeb.SurfboardController do
   end
 
   def show(conn, %{"id" => id}) do
+    changeset = Reviews.change_review(%Review{})
     surfboard = Reviews.get_surfboard!(id)
-    render(conn, "show.html", surfboard: surfboard)
+    reviews = Reviews.list_reviews()
+    render(conn, "show.html", surfboard: surfboard, changeset: changeset, reviews: reviews)
   end
 
   def edit(conn, %{"id" => id}) do

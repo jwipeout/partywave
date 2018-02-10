@@ -84,7 +84,7 @@ defmodule PartywaveWeb.SurfboardView do
   end
 
   def inches_decimal_to_ratio(decimal) do
-    {num, denom} = Float.ratio(decimal)
+    {_num, denom} = Float.ratio(decimal)
     inches_string = Float.to_string(decimal)
     [whole_number, ratio] = String.split(inches_string, ".")
 

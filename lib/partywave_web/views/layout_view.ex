@@ -5,7 +5,7 @@ defmodule PartywaveWeb.LayoutView do
     render "_sign_in_links.html", conn: conn
   end
 
-  def sign_in_links(current_user, conn) do
+  def sign_in_links(_current_user, conn) do
     render "_sign_out_links.html", conn: conn
   end
 end
