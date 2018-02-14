@@ -4,9 +4,11 @@ defmodule PartywaveWeb.ReviewController do
   alias Partywave.Reviews
   alias Partywave.Reviews.Review
 
-  def index(conn, _params) do
-    reviews = Reviews.list_reviews()
-    render(conn, "index.html", reviews: reviews)
+  plug Coherence.Authentication.Session, [protected: true] when not action in [:index, :show]
+
+  def index(conn, %{"surfboard_id" => surfboard_id}) do
+    surfboard = Reviews.get_surfboard!(surfboard_id)
+    render(conn, "index.html", surfboard: surfboard)
   end
 
   def new(conn, _params) do

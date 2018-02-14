@@ -228,7 +228,10 @@ defmodule Partywave.Reviews do
       ** (Ecto.NoResultsError)
 
   """
-  def get_surfboard!(id), do: Repo.get!(Surfboard, id)
+  def get_surfboard!(id) do
+    Repo.get!(Surfboard, id)
+    |> Repo.preload(:reviews)
+  end
 
   @doc """
   Creates a surfboard.
@@ -307,8 +310,14 @@ defmodule Partywave.Reviews do
 
   """
   def list_reviews do
-    Repo.all from review in Surfboard,
+    Repo.all from review in Review,
     preload: :user
+  end
+
+  def best_reviews do
+    Repo.all from review in Review,
+    preload: :user,
+    limit: 10
   end
 
   @doc """

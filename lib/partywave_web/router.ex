@@ -28,7 +28,6 @@ defmodule PartywaveWeb.Router do
   scope "/" do
     pipe_through :protected
     coherence_routes :protected
-    resources "/reviews", PartywaveWeb.ReviewController
   end
 
   pipeline :api do
@@ -42,6 +41,7 @@ defmodule PartywaveWeb.Router do
     resources "/shapers", ShaperController
     resources "/categories", CategoryController
     resources "/surfboards", SurfboardController
+    resources "/reviews", ReviewController
   end
 
   if Mix.env == :dev do

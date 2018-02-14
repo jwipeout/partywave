@@ -55,6 +55,10 @@
   .review_box
     .row
       .col-sm-2
-      
+        = review.body
+
       .col-sm-10
         = review.user.name
+
+p
+  = link "All reviews", to: review_path(@conn, :index, surfboard_id: @surfboard.id) 
