@@ -46,3 +46,8 @@ config :phoenix, :template_engines,
   slime: PhoenixSlime.Engine
 
 config :phoenix_slime, :use_slim_extension, true
+
+# scrivener_html
+config :scrivener_html,
+  routes_helper: PartywaveWeb.Router.Helpers,
+  view_style: :bootstrap_v4

@@ -26,7 +26,9 @@ defmodule Partywave.Mixfile do
         :coherence,
         :ex_aws,
         :hackney,
-        :poison
+        :poison,
+        :scrivener_ecto,
+        :scrivener_html
       ]
     ]
   end
@@ -55,7 +57,9 @@ defmodule Partywave.Mixfile do
       {:ex_aws, "~> 1.1"},
       {:hackney, "~> 1.6"},
       {:poison, "~> 3.1"},
-      {:sweet_xml, "~> 0.6"}
+      {:sweet_xml, "~> 0.6"},
+      {:scrivener_ecto, "~> 1.3"},
+      {:scrivener_html, "~> 1.7.1"}
     ]
   end
 

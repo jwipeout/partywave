@@ -13,7 +13,7 @@ table.table
       th
 
   tbody
-    = for review <- @surfboard.reviews do
+    = for review <- @reviews do
       tr
         td
           = review.body
@@ -30,6 +30,8 @@ table.table
 
           span
             = link "Delete", to: review_path(@conn, :delete, review), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs"
+
+= pagination_links @conn, @page, surfboard_id: @surfboard.id
 
 span
   = link "New Review", to: review_path(@conn, :new)
