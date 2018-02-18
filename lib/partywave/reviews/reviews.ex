@@ -309,8 +309,9 @@ defmodule Partywave.Reviews do
       [%Review{}, ...]
 
   """
-  def list_reviews do
-    Repo.all from review in Review,
+  def list_reviews(surfboard_id) do
+    from review in Review,
+    where: review.surfboard_id == ^surfboard_id,
     preload: :user
   end
 

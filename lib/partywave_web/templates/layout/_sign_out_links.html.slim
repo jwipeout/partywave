@@ -3,4 +3,6 @@ li.nav-item.dropdown
     | Me
 
   .dropdown-menu[aria-labelledby="navbarDropdown"]
+    = link "Account", to: registration_path(@conn, :edit), class: "dropdown-item"
+
     = link "log out", to: session_path(@conn, :delete), class: "dropdown-item", method: :delete

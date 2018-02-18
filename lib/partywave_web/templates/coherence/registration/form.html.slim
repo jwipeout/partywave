@@ -1,0 +1,93 @@
+= form_for @changeset, @action, [as: :registration, multipart: true], fn f  ->
+
+  = if @changeset.action do
+    .alert.alert-danger
+      p
+        = dgettext "coherence", "Oops, something went wrong! Please check the errors below."
+
+  .form-group
+    = required_label f,
+    dgettext("coherence", "Name"),
+    class: "control-label"
+
+    = text_input f,
+    :name,
+    class: "form-control",
+    required: ""
+
+    = error_tag f, :name
+
+  = unless (login_field = Coherence.Config.login_field) == :email do
+    .form-group
+      = required_label f,
+      login_field,
+      class: "control-label"
+
+      = text_input f,
+      login_field,
+      class: "form-control",
+      required: ""
+
+      = error_tag f, login_field
+
+  .form-group
+    = required_label f,
+    dgettext("coherence", "Email"),
+    class: "control-label"
+
+    = text_input f,
+    :email,
+    class: "form-control",
+    required: ""
+
+    = error_tag f, :email
+
+  .form-group
+    = label f,
+    :avatar,
+    class: "control-label"
+
+    = file_input f,
+    :avatar,
+    class: "form-control"
+
+  = if Coherence.Config.require_current_password and not is_nil(@changeset.data.id) do
+    .form-group
+      = required_label f,
+      :current_password,
+      class: "control-label"
+
+      = password_input f,
+      :current_password,
+      [class: "form-control"] ++ @required
+
+      = error_tag f, :current_password
+
+  .form-group
+    = required_label f,
+    dgettext("coherence", "Password"),
+    class: "control-label"
+
+    = password_input f,
+    :password,
+    [class: "form-control"] ++ @required
+
+    = error_tag f, :password
+
+  .form-group
+    = required_label f,
+    dgettext("coherence", "Password Confirmation"),
+    class: "control-label"
+
+    = password_input f,
+    :password_confirmation,
+    [class: "form-control"] ++ @required
+
+    = error_tag f, :password_confirmation
+
+  .form-group
+    = submit @label, class: "btn btn-primary"
+
+    = link dgettext("coherence", "Cancel"),
+    to: Coherence.Config.logged_out_url("/"),
+    class: "btn"

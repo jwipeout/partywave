@@ -5,6 +5,9 @@ table.table
   thead
     tr
       th
+        | Avatar
+
+      th
         | Body
 
       th
@@ -15,6 +18,10 @@ table.table
   tbody
     = for review <- @reviews do
       tr
+        td
+          = avatar(review.user) \
+          |> img_tag(class: "img-fluid")
+
         td
           = review.body
 

@@ -9,7 +9,7 @@ defmodule PartywaveWeb.ReviewController do
   def index(conn, params) do
     surfboard = Reviews.get_surfboard!(params["surfboard_id"])
     page =
-      Partywave.Reviews.Review
+      Reviews.list_reviews(params["surfboard_id"])
       |> Partywave.Repo.paginate(params)
 
     render(conn, "index.html", reviews: page.entries, page: page, surfboard: surfboard)

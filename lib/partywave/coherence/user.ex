@@ -2,13 +2,13 @@ defmodule Partywave.Coherence.User do
   @moduledoc false
   use Ecto.Schema
   use Coherence.Schema
-
-
+  use Arc.Ecto.Schema
 
   schema "users" do
     field :name, :string
     field :email, :string
     field :role, :string
+    field :avatar, PartywaveWeb.Avatar.Type
 
     coherence_schema()
 
@@ -21,6 +21,7 @@ defmodule Partywave.Coherence.User do
   def changeset(model, params \\ %{}) do
     model
     |> cast(params, [:name, :email, :role] ++ coherence_fields())
+    |> cast_attachments(params, [:avatar])
     |> validate_required([:name, :email])
     |> validate_format(:email, ~r/@/)
     |> unique_constraint(:email)
