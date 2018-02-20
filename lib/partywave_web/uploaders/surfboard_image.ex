@@ -4,7 +4,7 @@ defmodule PartywaveWeb.SurfboardImage do
   # Include ecto support (requires package arc_ecto installed):
   use Arc.Ecto.Definition
 
-  @versions [:original]
+  @versions [:original, :medium]
 
   # To add a thumbnail version:
   # @versions [:original, :thumb]
@@ -15,9 +15,9 @@ defmodule PartywaveWeb.SurfboardImage do
   end
 
   # Define a thumbnail transformation:
-  # def transform(:thumb, _) do
-  #   {:convert, "-strip -thumbnail 250x250^ -gravity center -extent 250x250 -format png", :png}
-  # end
+  def transform(:medium, _) do
+    {:convert, "-strip -thumbnail 160x238^ -gravity center -extent 160x238 -format png", :png}
+  end
 
   # Override the persisted filenames:
   # def filename(version, _) do

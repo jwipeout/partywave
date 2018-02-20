@@ -1,3 +1,14 @@
+.row
+  .col-sm-4
+    h2
+      = link @surfboard.model, to: surfboard_path(@conn, :show, @surfboard)
+
+    p
+      = @surfboard.shaper.name
+
+  .col-sm-8
+    = render "ratings_percent.html", reviews: @surfboard.reviews
+
 h2
   | Listing Reviews
 

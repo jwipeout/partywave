@@ -51,9 +51,15 @@ exports.config = {
       // Do not use ES6 compiler in vendor code
       ignore: [/vendor/]
     },
+    copycat: {
+      "fonts": ["node_modules/font-awesome/fonts"] // copy node_modules/font-awesome/fonts/* to priv/static/fonts/
+    },
     sass: {
       options: {
-        includePaths: ["node_modules/bootstrap/scss", "node_modules/font-awesome/scss"], // tell sass-brunch where to look for files to @import
+        includePaths: [
+          "node_modules/bootstrap/scss",
+          "node_modules/font-awesome/scss"
+        ], // tell sass-brunch where to look for files to @import
         precision: 8 // minimum precision required by bootstrap
       }
     }

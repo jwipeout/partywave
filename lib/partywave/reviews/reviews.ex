@@ -230,7 +230,7 @@ defmodule Partywave.Reviews do
   """
   def get_surfboard!(id) do
     Repo.get!(Surfboard, id)
-    |> Repo.preload(:reviews)
+    |> Repo.preload([:reviews, :shaper])
   end
 
   @doc """

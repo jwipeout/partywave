@@ -4,7 +4,7 @@ defmodule PartywaveWeb.Avatar do
   # Include ecto support (requires package arc_ecto installed):
   use Arc.Ecto.Definition
 
-  @versions [:original, :thumb]
+  @versions [:original, :medium, :thumb]
 
   # To add a thumbnail version:
   # @versions [:original, :thumb]
@@ -15,8 +15,12 @@ defmodule PartywaveWeb.Avatar do
   end
 
   # Define a thumbnail transformation:
+  def transform(:medium, _) do
+    {:convert, "-strip -thumbnail 300x300^ -gravity center -extent 300x300 -format png", :png}
+  end
+
   def transform(:thumb, _) do
-    {:convert, "-strip -thumbnail 250x250^ -gravity center -extent 250x250 -format png", :png}
+    {:convert, "-strip -thumbnail 100x100^ -gravity center -extent 100x100 -format png", :png}
   end
 
   # Override the persisted filenames:

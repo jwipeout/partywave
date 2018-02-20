@@ -4,7 +4,7 @@ h2
   = for surfboard <- @surfboards do
     .row
       .col-md-2
-        = main_image(surfboard) \
+        = main_image(surfboard, :medium) \
         |> img_tag(class: "img-fluid") \
         |> link(to: surfboard_path(@conn, :show, surfboard))
 
