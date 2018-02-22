@@ -17,6 +17,7 @@ defmodule Partywave.Reviews.Surfboard do
     field :width, :float
     field :width_ratio, :string, virtual: true
     field :image, PartywaveWeb.SurfboardImage.Type
+    field :reviews_count, :integer, default: 0
 
     belongs_to :category, Partywave.Reviews.Category
     belongs_to :shaper, Partywave.Reviews.Shaper
@@ -30,7 +31,7 @@ defmodule Partywave.Reviews.Surfboard do
   @doc false
   def changeset(%Surfboard{} = surfboard, attrs) do
     surfboard
-    |> cast(attrs, [:model, :length_feet, :volume, :shaper_id, :user_id, :width_ratio, :category_id, :thickness_ratio])
+    |> cast(attrs, [:model, :length_feet, :volume, :shaper_id, :user_id, :width_ratio, :category_id, :thickness_ratio, :reviews_count])
     |> cast_attachments(attrs, [:image])
     |> validate_required([:model, :length_feet, :volume, :width_ratio, :shaper_id, :user_id, :category_id, :thickness_ratio])
     |> convert_length_feet_to_inches()
