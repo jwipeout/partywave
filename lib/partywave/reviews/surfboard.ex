@@ -18,6 +18,7 @@ defmodule Partywave.Reviews.Surfboard do
     field :width_ratio, :string, virtual: true
     field :image, PartywaveWeb.SurfboardImage.Type
     field :reviews_count, :integer, default: 0
+    field :reviews_average_rating, :integer, default: 0
 
     belongs_to :category, Partywave.Reviews.Category
     belongs_to :shaper, Partywave.Reviews.Shaper
