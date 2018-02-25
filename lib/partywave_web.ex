@@ -40,6 +40,8 @@ defmodule PartywaveWeb do
       import PartywaveWeb.Router.Helpers
       import PartywaveWeb.ErrorHelpers
       import PartywaveWeb.Gettext
+
+      use PartywaveWeb.MetaDefaults
     end
   end
 
