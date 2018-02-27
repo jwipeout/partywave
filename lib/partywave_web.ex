@@ -29,6 +29,7 @@ defmodule PartywaveWeb do
   def view do
     quote do
       use Phoenix.View, root: "lib/partywave_web/templates",
+                        pattern: "**/*",
                         namespace: PartywaveWeb
 
       # Import convenience functions from controllers
@@ -40,8 +41,6 @@ defmodule PartywaveWeb do
       import PartywaveWeb.Router.Helpers
       import PartywaveWeb.ErrorHelpers
       import PartywaveWeb.Gettext
-
-      use PartywaveWeb.MetaDefaults
     end
   end
 

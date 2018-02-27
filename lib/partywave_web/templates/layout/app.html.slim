@@ -9,8 +9,8 @@ html lang="en"
 
     meta content="width=device-width, initial-scale=1" name="viewport"
 
-    title
-      = @view_module.title(@view_template, assigns)
+    = render_existing(@view_module, "meta/meta." <> @view_template, assigns) || \
+    render(PartywaveWeb.LayoutView, "meta.html", assigns)
 
     link href="#{static_path(@conn, "/css/app.css")}" rel="stylesheet"
 
