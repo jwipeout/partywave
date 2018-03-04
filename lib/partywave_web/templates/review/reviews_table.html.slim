@@ -1,0 +1,5 @@
+= for review <- @reviews do
+  p
+    = review.title
+
+= pagination_links @conn, @page, surfboard_id: @surfboard.id

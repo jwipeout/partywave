@@ -1,3 +1,5 @@
+import Ecto.Query
+
 alias Partywave.Repo
 
 alias Partywave.Coherence.User

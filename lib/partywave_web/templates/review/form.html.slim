@@ -7,6 +7,11 @@
   = hidden_input f, :surfboard_id, value: @surfboard.id
 
   .form-group
+    = label f, :title, class: "control-label"
+    = text_input f, :title, class: "form-control"
+    = error_tag f, :title
+
+  .form-group
     = label f, :body, class: "control-label"
     = textarea f, :body, class: "form-control"
     = error_tag f, :body

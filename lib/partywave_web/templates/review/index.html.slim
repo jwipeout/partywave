@@ -7,49 +7,23 @@
       = @surfboard.shaper.name
 
   .col-sm-8
-    = render "ratings_percent.html", reviews: @surfboard.reviews
+    p
+      = render "ratings_percent.html", reviews: @surfboard.reviews
+
+    p
+      span
+        = reviews_count(@surfboard.reviews_count)
+
 
 h2
   | Listing Reviews
 
-table.table
-  thead
-    tr
-      th
-        | Avatar
+= render "reviews_table.html",
+conn: @conn,
+reviews: @reviews,
+page: @page,
+surfboard: @surfboard
 
-      th
-        | Body
-
-      th
-        | Rating
-
-      th
-
-  tbody
-    = for review <- @reviews do
-      tr
-        td
-          = avatar(review.user) \
-          |> img_tag(class: "img-fluid")
-
-        td
-          = review.body
-
-        td
-          = review.rating
-
-        td.text-right
-          span
-            = link "Show", to: review_path(@conn, :show, review), class: "btn btn-default btn-xs"
-
-          span
-            = link "Edit", to: review_path(@conn, :edit, review), class: "btn btn-default btn-xs"
-
-          span
-            = link "Delete", to: review_path(@conn, :delete, review), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs"
-
-= pagination_links @conn, @page, surfboard_id: @surfboard.id
 
 span
   = link "New Review", to: review_path(@conn, :new)
