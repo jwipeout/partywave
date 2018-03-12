@@ -51,14 +51,10 @@
   .card-body
     = render PartywaveWeb.ReviewView, "form.html", Map.put(assigns, :action, review_path(@conn, :create))
 
-= for review <- @reviews do
-  .review_box
-    .row
-      .col-sm-2
-        = review.body
-
-      .col-sm-10
-        = review.user.name
+= render PartywaveWeb.ReviewView,
+"reviews_table.html",
+conn: @conn,
+reviews: @reviews
 
 p
-  = link "All reviews", to: review_path(@conn, :index, surfboard_id: @surfboard.id) 
+  = link "All reviews", to: review_path(@conn, :index, surfboard_id: @surfboard.id)

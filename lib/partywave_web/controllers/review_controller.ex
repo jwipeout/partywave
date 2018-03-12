@@ -15,11 +15,6 @@ defmodule PartywaveWeb.ReviewController do
     render(conn, "index.html", reviews: page.entries, page: page, surfboard: surfboard)
   end
 
-  def new(conn, _params) do
-    changeset = Reviews.change_review(%Review{})
-    render(conn, "new.html", changeset: changeset)
-  end
-
   def create(conn, %{"review" => review_params}) do
     current_user_id_string = Integer.to_string(conn.assigns.current_user.id)
     review_current_user_params = Map.put(review_params, "user_id", current_user_id_string)
@@ -34,11 +29,6 @@ defmodule PartywaveWeb.ReviewController do
       {:error, %Ecto.Changeset{} = changeset} ->
         render(conn, "new.html", changeset: changeset)
     end
-  end
-
-  def show(conn, %{"id" => id}) do
-    review = Reviews.get_review!(id)
-    render(conn, "show.html", review: review)
   end
 
   def edit(conn, %{"id" => id}) do

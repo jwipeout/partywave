@@ -1,5 +1,16 @@
 = for review <- @reviews do
-  p
-    = review.title
+  .review_row
+    h5
+      = review.title
 
-= pagination_links @conn, @page, surfboard_id: @surfboard.id
+    .review_section
+      = number_to_percent(review.rating)
+
+    .review_section
+      = review.user.name
+
+    .review_section.text-muted
+      = Timex.format!(review.inserted_at, "%B %e, %Y", :strftime)
+
+    .review_body
+      = review.body

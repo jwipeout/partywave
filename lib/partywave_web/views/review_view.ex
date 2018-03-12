@@ -4,6 +4,7 @@ defmodule PartywaveWeb.ReviewView do
   import Scrivener.HTML
   import PartywaveWeb.ReviewHelper
   import PartywaveWeb.SurfboardHelper
+  import PartywaveWeb.NumberHelper
 
   def avatar(user) do
     PartywaveWeb.Avatar.url({user.avatar, user}, :thumb)

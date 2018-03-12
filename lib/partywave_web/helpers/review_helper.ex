@@ -1,5 +1,5 @@
 defmodule PartywaveWeb.ReviewHelper do
-  import NumberHelper
+  import PartywaveWeb.NumberHelper
 
   def ratings_percent(reviews) do
     ratings = Enum.map(reviews, fn(review) -> review.rating end)

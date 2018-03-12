@@ -28,7 +28,8 @@ defmodule Partywave.Mixfile do
         :hackney,
         :poison,
         :scrivener_ecto,
-        :scrivener_html
+        :scrivener_html,
+        :timex
       ]
     ]
   end
@@ -59,7 +60,8 @@ defmodule Partywave.Mixfile do
       {:poison, "~> 3.1"},
       {:sweet_xml, "~> 0.6"},
       {:scrivener_ecto, "~> 1.3"},
-      {:scrivener_html, "~> 1.7.1"}
+      {:scrivener_html, "~> 1.7.1"},
+      {:timex, "~> 3.2"}
     ]
   end
 

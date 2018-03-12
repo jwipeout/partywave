@@ -1,6 +1,6 @@
 defmodule Partywave.Repo do
   use Ecto.Repo, otp_app: :partywave
-  use Scrivener, page_size: 2
+  use Scrivener, page_size: 20
 
   @doc """
   Dynamically loads the repository url from the

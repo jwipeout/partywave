@@ -20,10 +20,6 @@ h2
 
 = render "reviews_table.html",
 conn: @conn,
-reviews: @reviews,
-page: @page,
-surfboard: @surfboard
+reviews: @reviews
 
-
-span
-  = link "New Review", to: review_path(@conn, :new)
+= pagination_links @conn, @page, surfboard_id: @surfboard.id
