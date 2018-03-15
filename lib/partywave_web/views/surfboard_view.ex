@@ -1,6 +1,8 @@
 defmodule PartywaveWeb.SurfboardView do
   use PartywaveWeb, :view
 
+  import PartywaveWeb.SurfboardHelper
+
   def length_select do
     [
       "6' 0",

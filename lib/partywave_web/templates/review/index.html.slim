@@ -8,7 +8,7 @@
 
   .col-sm-8
     p
-      = render "ratings_percent.html", reviews: @surfboard.reviews
+      = reviews_average_rating(@surfboard.reviews_average_rating)
 
     p
       span

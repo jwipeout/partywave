@@ -4,7 +4,7 @@ defmodule PartywaveWeb.ReviewController do
   alias Partywave.Reviews
   alias Partywave.Reviews.Review
 
-  plug Coherence.Authentication.Session, [protected: true] when not action in [:index, :show]
+  plug Coherence.Authentication.Session, [protected: true] when not action in [:index]
 
   def index(conn, params) do
     surfboard = Reviews.get_surfboard!(params["surfboard_id"])
