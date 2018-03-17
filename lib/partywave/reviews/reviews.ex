@@ -316,8 +316,9 @@ defmodule Partywave.Reviews do
     order_by: [desc: review.inserted_at]
   end
 
-  def best_reviews do
+  def best_reviews(surfboard_id) do
     Repo.all from review in Review,
+    where: review.surfboard_id == ^ surfboard_id,
     preload: :user,
     limit: 10,
     order_by: [desc: review.inserted_at]

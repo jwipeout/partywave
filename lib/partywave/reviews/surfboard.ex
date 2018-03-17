@@ -19,6 +19,7 @@ defmodule Partywave.Reviews.Surfboard do
     field :image, PartywaveWeb.SurfboardImage.Type
     field :reviews_count, :integer, default: 0
     field :reviews_average_rating, :integer, default: 0
+    field :our_rating, :integer, default: 0
 
     belongs_to :category, Partywave.Reviews.Category
     belongs_to :shaper, Partywave.Reviews.Shaper
@@ -32,9 +33,35 @@ defmodule Partywave.Reviews.Surfboard do
   @doc false
   def changeset(%Surfboard{} = surfboard, attrs) do
     surfboard
-    |> cast(attrs, [:model, :length_feet, :volume, :shaper_id, :user_id, :width_ratio, :category_id, :thickness_ratio, :reviews_count])
+    |> cast(
+      attrs,
+      [
+        :model,
+        :length_feet,
+        :volume,
+        :shaper_id,
+        :user_id,
+        :width_ratio,
+        :category_id,
+        :thickness_ratio,
+        :reviews_count,
+        :our_rating
+      ]
+    )
     |> cast_attachments(attrs, [:image])
-    |> validate_required([:model, :length_feet, :volume, :width_ratio, :shaper_id, :user_id, :category_id, :thickness_ratio])
+    |> validate_required(
+      [
+        :model,
+        :length_feet,
+        :volume,
+        :width_ratio,
+        :shaper_id,
+        :user_id,
+        :category_id,
+        :thickness_ratio,
+        :our_rating
+      ]
+    )
     |> convert_length_feet_to_inches()
     |> convert_width_ratio_to_inches()
     |> convert_thickness_ratio_to_inches()

@@ -8,7 +8,7 @@ h2
       |> img_tag(class: "img-fluid") \
       |> link(to: surfboard_path(@conn, :show, surfboard))
 
-    .col-md-6
+    .col-md-4
       h3
         = link surfboard.model,
         to: surfboard_path(@conn, :show, surfboard)
@@ -20,6 +20,24 @@ h2
       p
         = reviews_count(surfboard.reviews_count)
 
-    .col-md-4
+    .col-md-3
       h5
+        .score
+          span
+            | PartyWave Score
+
+          span.rating_tooltip
+            i.fa.fa-question-circle-o aria-hidden="true" data-toggle="tooltip" data-placement="top" title="Score given by PartyWave"
+
+        = our_rating(surfboard.our_rating)
+
+    .col-md-3
+      h5
+        .score
+          span
+            | Surfers Score
+
+          span.rating_tooltip
+            i.fa.fa-question-circle-o aria-hidden="true" data-toggle="tooltip" data-placement="top" title="Average score from surfboard reviews"
+
         = reviews_average_rating(surfboard.reviews_average_rating)

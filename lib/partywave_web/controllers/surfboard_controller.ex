@@ -41,7 +41,7 @@ defmodule PartywaveWeb.SurfboardController do
   def show(conn, %{"id" => id}) do
     changeset = Reviews.change_review(%Review{})
     surfboard = Reviews.get_surfboard!(id)
-    reviews = Reviews.best_reviews()
+    reviews = Reviews.best_reviews(id)
     render(conn, "show.html", surfboard: surfboard, changeset: changeset, reviews: reviews)
   end
 

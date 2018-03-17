@@ -76,4 +76,11 @@
     = error_tag f, :volume
 
   .form-group
+    = label f, "Our rating", class: "control-label"
+
+    = number_input f, :our_rating, step: "any", class: "form-control"
+
+    = error_tag f, :our_rating
+
+  .form-group
     = submit "Submit", class: "btn btn-primary"
