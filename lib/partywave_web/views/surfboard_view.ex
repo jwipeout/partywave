@@ -117,4 +117,17 @@ defmodule PartywaveWeb.SurfboardView do
   def main_image(surfboard) do
     PartywaveWeb.SurfboardImage.url({surfboard.image, surfboard})
   end
+
+  def new_review(conn, assigns, nil) do
+    content_tag :div do
+      [
+        content_tag(:a, "Sign in", href: session_path(conn, :new)),
+        content_tag(:span, " to leave a surfboard review.")
+      ]
+    end
+  end
+
+  def new_review(conn, assigns, _current_user) do
+    render PartywaveWeb.ReviewView, "new.html", Map.put(assigns, :action, review_path(conn, :create))
+  end
 end

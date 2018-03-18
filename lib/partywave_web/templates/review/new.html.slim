@@ -1,0 +1,7 @@
+.card
+  .card-header
+    h2
+      | New review
+
+  .card-body
+    = render "form.html", Map.put(assigns, :action, review_path(@conn, :create))

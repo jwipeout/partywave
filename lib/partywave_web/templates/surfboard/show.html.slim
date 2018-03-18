@@ -3,53 +3,45 @@
     = main_image(@surfboard) |> img_tag(class: "img-fluid")
 
   .col-md-8
-    h2
-      | Show Surfboard
+    .card
+      .card-header.commit
+        h2
+          | SurfboardHelper
 
-    ul
-      li
-        strong
-          | Model:
+      .card-body
+        ul
+          li
+            strong
+              | Model:
 
-        = @surfboard.model
+            = @surfboard.model
 
-      li
-        strong
-          | Length:
+          li
+            strong
+              | Length:
 
-        = @surfboard.length
+            = @surfboard.length
 
-      li
-        strong
-          | Width:
+          li
+            strong
+              | Width:
 
-        = @surfboard.width
+            = @surfboard.width
 
-      li
-        strong
-          | Thickness:
+          li
+            strong
+              | Thickness:
 
-        = @surfboard.thickness
+            = @surfboard.thickness
 
-      li
-        strong
-          | Volume:
+          li
+            strong
+              | Volume:
 
-        = @surfboard.volume
+            = @surfboard.volume
 
-    span
-      = link "Edit", to: surfboard_path(@conn, :edit, @surfboard)
-
-    span
-      = link "Back", to: surfboard_path(@conn, :index)
-
-.card
-  .card-header
-    h2
-      | New review
-
-  .card-body
-    = render PartywaveWeb.ReviewView, "form.html", Map.put(assigns, :action, review_path(@conn, :create))
+.new_review
+  = new_review(@conn, assigns, Coherence.current_user(@conn))
 
 = render PartywaveWeb.ReviewView,
 "reviews_table.html",
