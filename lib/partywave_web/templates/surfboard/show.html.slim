@@ -4,41 +4,37 @@
 
   .col-md-8
     .card
-      .card-header.commit
-        h2
-          | SurfboardHelper
+      h5.card-header
+        = @surfboard.model
 
       .card-body
-        ul
-          li
-            strong
-              | Model:
+        h6
+          | Shaper
 
-            = @surfboard.model
+        .surboard_details
+          = @surfboard.shaper.name
 
-          li
-            strong
-              | Length:
+        h6
+          .score
+            span
+              | PartyWave Score
 
-            = @surfboard.length
+            span.rating_tooltip
+              i.fa.fa-question-circle-o aria-hidden="true" data-toggle="tooltip" data-placement="top" title="Score given by PartyWave"
 
-          li
-            strong
-              | Width:
+        .surboard_details
+          = our_rating(@surfboard.our_rating)
 
-            = @surfboard.width
+        h6
+          .score
+            span
+              | Surfers Score
 
-          li
-            strong
-              | Thickness:
+            span.rating_tooltip
+              i.fa.fa-question-circle-o aria-hidden="true" data-toggle="tooltip" data-placement="top" title="Average score from surfboard reviews"
 
-            = @surfboard.thickness
-
-          li
-            strong
-              | Volume:
-
-            = @surfboard.volume
+        .surboard_details
+          = reviews_average_rating(@surfboard.reviews_average_rating)
 
 .new_review
   = new_review(@conn, assigns, Coherence.current_user(@conn))

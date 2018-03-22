@@ -1,16 +1,17 @@
 = for review <- @reviews do
-  .review_row
-    h5
-      = review.title
+  .card.review_card
+    .card-header
+      span
+        = review.user.name
+      span
+        = " - #{review.title}"
 
-    .review_section
-      = number_to_percent(review.rating)
+    .card-body
+      .review_section
+        = reviews_average_rating(review.rating)
 
-    .review_section
-      = review.user.name
+      .review_section.text-muted
+        = Timex.format!(review.inserted_at, "%B %e, %Y", :strftime)
 
-    .review_section.text-muted
-      = Timex.format!(review.inserted_at, "%B %e, %Y", :strftime)
-
-    .review_body
-      = review.body
+      .review_body
+        = review.body
