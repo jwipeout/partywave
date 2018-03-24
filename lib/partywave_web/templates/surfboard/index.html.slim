@@ -17,6 +17,9 @@ h2
         = link surfboard.shaper.name,
         to: surfboard_path(@conn, :show, surfboard)
 
+      p.text-muted
+        = format_date(surfboard.released_on)
+
       p
         = reviews_count(surfboard.reviews_count)
 

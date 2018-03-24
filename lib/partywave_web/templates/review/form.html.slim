@@ -12,12 +12,12 @@
     = error_tag f, :title
 
   .form-group
-    = label f, :body, class: "control-label"
+    = label f, gettext("body"), class: "control-label"
     = textarea f, :body, class: "form-control"
     = error_tag f, :body
 
   .form-group
-    = label f, :rating, class: "control-label"
+    = label f, gettext("rating"), class: "control-label"
     = number_input f, :rating, class: "form-control"
     = error_tag f, :rating
 

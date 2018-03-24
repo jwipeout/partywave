@@ -5,8 +5,6 @@ defmodule PartywaveWeb.ReviewView do
   import PartywaveWeb.ReviewHelper
   import PartywaveWeb.SurfboardHelper
   import PartywaveWeb.NumberHelper
-
-  def avatar(user) do
-    PartywaveWeb.Avatar.url({user.avatar, user}, :thumb)
-  end
+  import PartywaveWeb.DateHelper
+  import PartywaveWeb.UserHelper
 end

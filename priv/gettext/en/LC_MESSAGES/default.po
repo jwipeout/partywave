@@ -1,0 +1,5 @@
+msgid "body"
+msgstr "comment"
+
+msgid "rating"
+msgstr "rating(0-100)"

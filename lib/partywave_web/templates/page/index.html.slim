@@ -1,8 +1,17 @@
 .jumbotron
   h2
-    = gettext "Welcome to %{name}!", name: "Phoenix"
+    = gettext "Welcome to %{name}!", name: "PartyWave"
 
   p.lead
-    | A productive web framework that does not compromise speed and maintainability.
+    | We are all about rating surfboards so that you can make the best purchase possible.
+    |  There is nothing more frustrating than paying $800 for a brand new surfboard
+    |  and it doesn't ride like you thought it would.
 
-  = link "log out", to: session_path(@conn, :delete), method: :delete
+  p
+    | We encourage everyone to leave a review if you have ridden one of the boards.
+    |  If you are looking to purchase a surfboard, read through the reviews. PartyWave
+    |  has our own rating that we give as well as the average rating from everyone
+    |  else that has left a review.
+
+  p
+    = link "Surfboard Reviews", to: surfboard_path(@conn, :index), class: "btn btn-primary"

@@ -211,7 +211,8 @@ defmodule Partywave.Reviews do
   """
   def list_surfboards do
     Repo.all from surfboard in Surfboard,
-      preload: [:shaper, :category]
+      preload: [:shaper, :category],
+      order_by: [desc: surfboard.released_on]
   end
 
   @doc """

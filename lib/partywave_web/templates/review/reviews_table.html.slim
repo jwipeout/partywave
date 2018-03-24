@@ -1,6 +1,8 @@
 = for review <- @reviews do
   .card.review_card
     .card-header
+      = avatar(review.user, :thumb) \
+      |> img_tag(class: "img-fluid")
       span
         = review.user.name
       span
@@ -11,7 +13,7 @@
         = reviews_average_rating(review.rating)
 
       .review_section.text-muted
-        = Timex.format!(review.inserted_at, "%B %e, %Y", :strftime)
+        = format_date(review.inserted_at)
 
       .review_body
         = review.body
