@@ -1,0 +1,10 @@
+.card
+  h3.card-header
+    = dgettext "coherence", "Register Account"
+
+  .card-body
+    = render "form.html",
+    changeset: @changeset,
+    label: dgettext("coherence", "Register"),
+    required: [required: ""],
+    action: registration_path(@conn, :create)
