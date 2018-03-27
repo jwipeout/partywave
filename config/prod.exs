@@ -82,3 +82,7 @@ config :coherence, PartywaveWeb.Coherence.Mailer,
 config :arc,
   storage: Arc.Storage.S3, # or Arc.Storage.Local
   bucket: System.get_env("AWS_S3_BUCKET") # if using Amazon S3
+
+# ex_aws file storage
+config :ex_aws,
+  region: "us-west-2"
