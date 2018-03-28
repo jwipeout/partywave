@@ -4,6 +4,9 @@ defmodule PartywaveWeb.Avatar do
   # Include ecto support (requires package arc_ecto installed):
   use Arc.Ecto.Definition
 
+  # public to view
+  @acl :public_read
+
   @versions [:original, :medium, :thumb]
 
   # To add a thumbnail version:

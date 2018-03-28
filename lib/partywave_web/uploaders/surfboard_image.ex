@@ -4,6 +4,9 @@ defmodule PartywaveWeb.SurfboardImage do
   # Include ecto support (requires package arc_ecto installed):
   use Arc.Ecto.Definition
 
+  # public to view
+  @acl :public_read
+
   @versions [:original, :medium]
 
   # To add a thumbnail version:
