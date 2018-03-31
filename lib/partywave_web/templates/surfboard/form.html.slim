@@ -36,46 +36,6 @@
     = error_tag f, :model
 
   .form-group
-    = label f, "length(feet/inches)", class: "control-label"
-
-    = select f,
-    :length_feet,
-    length_select(),
-    class: "form-control",
-    selected: inches_to_feet(@changeset.data.length)
-
-    = error_tag f, :length
-
-  .form-group
-    = label f, "Width(inches)", class: "control-label"
-
-    = select f,
-    :width_ratio,
-    width_select(),
-    class: "form-control",
-    selected: inches_decimal_to_ratio(@changeset.data.width)
-
-    = error_tag f, :width_ratio
-
-  .form-group
-    = label f, "Thickness(inches)", class: "control-label"
-
-    = select f,
-    :thickness_ratio,
-    thickness_select(),
-    class: "form-control",
-    selected: inches_decimal_to_ratio(@changeset.data.thickness)
-
-    = error_tag f, :thickness_ratio
-
-  .form-group
-    = label f, "Volume(liters)", class: "control-label"
-
-    = number_input f, :volume, step: "any", class: "form-control"
-
-    = error_tag f, :volume
-
-  .form-group
     = label f, "Our rating", class: "control-label"
 
     = number_input f, :our_rating, step: "any", class: "form-control"

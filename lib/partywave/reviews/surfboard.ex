@@ -54,20 +54,13 @@ defmodule Partywave.Reviews.Surfboard do
     |> validate_required(
       [
         :model,
-        :length_feet,
-        :volume,
-        :width_ratio,
         :shaper_id,
         :user_id,
         :category_id,
-        :thickness_ratio,
         :our_rating,
         :released_on
       ]
     )
-    |> convert_length_feet_to_inches()
-    |> convert_width_ratio_to_inches()
-    |> convert_thickness_ratio_to_inches()
     |> unique_constraint(:model)
     |> assoc_constraint(:shaper)
     |> assoc_constraint(:category)
