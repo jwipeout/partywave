@@ -18,6 +18,7 @@ defmodule PartywaveWeb.SurfboardImage do
   end
 
   # Define a thumbnail transformation:
+  # Partywave surfboards template dimensions 674px 800px
   def transform(:medium, _) do
     {:convert, "-strip -thumbnail 200x238^ -gravity center -extent 200x238 -format png", :png}
   end
