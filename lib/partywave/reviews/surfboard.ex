@@ -21,6 +21,7 @@ defmodule Partywave.Reviews.Surfboard do
     field :reviews_average_rating, :integer, default: 0
     field :our_rating, :integer, default: 0
     field :released_on, :naive_datetime
+    field :our_review, :string
 
     belongs_to :category, Partywave.Reviews.Category
     belongs_to :shaper, Partywave.Reviews.Shaper
@@ -47,7 +48,8 @@ defmodule Partywave.Reviews.Surfboard do
         :thickness_ratio,
         :reviews_count,
         :our_rating,
-        :released_on
+        :released_on,
+        :our_review
       ]
     )
     |> cast_attachments(attrs, [:image])

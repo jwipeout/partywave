@@ -3,3 +3,9 @@ msgstr "comment"
 
 msgid "rating"
 msgstr "rating(0-100)"
+
+msgid "our_rating_tooltip"
+msgstr "Score from 0-100% given by PartyWave"
+
+msgid "surfers_rating_tooltip"
+msgstr "Average score from surfboard reviews"

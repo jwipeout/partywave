@@ -19,8 +19,7 @@
             span
               | PartyWave Score
 
-            span.rating_tooltip
-              i.fa.fa-question-circle-o aria-hidden="true" data-toggle="tooltip" data-placement="top" title="Score given by PartyWave"
+            = rating_tooltip(gettext("our_rating_tooltip"))
 
         .surboard_details
           = our_rating(@surfboard.our_rating)
@@ -30,11 +29,16 @@
             span
               | Surfers Score
 
-            span.rating_tooltip
-              i.fa.fa-question-circle-o aria-hidden="true" data-toggle="tooltip" data-placement="top" title="Average score from surfboard reviews"
+            = rating_tooltip(gettext("surfers_rating_tooltip"))
 
         .surboard_details
           = reviews_average_rating(@surfboard.reviews_average_rating)
+
+        h6
+          | PartyWave Review
+
+        .surboard_details
+          = @surfboard.our_review
 
 .new_review
   = new_review(@conn, assigns, Coherence.current_user(@conn))

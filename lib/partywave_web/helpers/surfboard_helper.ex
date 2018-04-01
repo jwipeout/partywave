@@ -27,4 +27,26 @@ defmodule PartywaveWeb.SurfboardHelper do
       ]
     end
   end
+
+  def rating_tooltip(title) do
+    content_tag(:span, class: "rating_tooltip") do
+      [
+        content_tag(
+          :i,
+          "",
+          class: "fa fa-question-circle-o",
+          aria: [
+            hidden: "true"
+          ],
+          data: [
+            toggle: "tooltip",
+            placement: "top"
+          ],
+          title: title
+        )
+      ]
+    end
+    # span.rating_tooltip
+    #   i.fa.fa-question-circle-o aria-hidden="true" data-toggle="tooltip" data-placement="top" title="Score given by PartyWave"
+  end
 end

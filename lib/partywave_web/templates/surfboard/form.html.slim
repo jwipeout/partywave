@@ -43,6 +43,13 @@
     = error_tag f, :our_rating
 
   .form-group
+    = label f, "Our review", class: "control-label"
+
+    = textarea f, :our_review, class: "form-control"
+
+    = error_tag f, :our_review
+
+  .form-group
     = label f, :released_on, class: "control-label"
 
     = datetime_select f, :released_on, year: [options: 1990..2020], class: "form-control"
