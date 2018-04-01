@@ -19,7 +19,7 @@ defmodule PartywaveWeb.SurfboardImage do
 
   # Define a thumbnail transformation:
   def transform(:medium, _) do
-    {:convert, "-strip -thumbnail 160x238^ -gravity center -extent 160x238 -format png", :png}
+    {:convert, "-strip -thumbnail 200x238^ -gravity center -extent 200x238 -format png", :png}
   end
 
   # Override the persisted filenames:
