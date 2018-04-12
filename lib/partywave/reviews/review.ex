@@ -26,6 +26,11 @@ defmodule Partywave.Reviews.Review do
     |> cast(attrs, [:body, :rating, :surfboard_id, :user_id, :title])
     |> validate_required([:body, :rating, :surfboard_id, :title])
     |> validate_inclusion(:rating, 0..100)
+    |> unique_constraint(
+      :title,
+      name: :unique_review_per_surfboard,
+      message: "You already reviewed this."
+    )
     |> assoc_constraint(:user)
     |> assoc_constraint(:surfboard)
     |> prepare_changes(fn prepared_changeset ->

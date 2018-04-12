@@ -27,7 +27,9 @@ defmodule PartywaveWeb.ReviewController do
         |> put_flash(:info, "Review created successfully.")
         |> redirect(to: surfboard_path(conn, :show, t.surfboard))
       {:error, %Ecto.Changeset{} = changeset} ->
-        render(conn, "new.html", changeset: changeset)
+        surfboard = Partywave.Reviews.get_surfboard!(changeset.changes.surfboard_id)
+        reviews = Reviews.best_reviews(surfboard.id)
+        render(conn, PartywaveWeb.SurfboardView, "show.html", changeset: changeset, surfboard: surfboard, reviews: reviews)
     end
   end
 
