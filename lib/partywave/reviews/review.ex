@@ -1,5 +1,3 @@
-require Logger
-
 defmodule Partywave.Reviews.Review do
   use Ecto.Schema
 

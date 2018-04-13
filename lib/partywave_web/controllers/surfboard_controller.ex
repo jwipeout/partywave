@@ -5,13 +5,19 @@ defmodule PartywaveWeb.SurfboardController do
   alias Partywave.Reviews.Surfboard
   alias Partywave.Reviews.Review
 
+  import Ecto.Query
+
   plug Coherence.Authentication.Session, [protected: true] when not action in [:index, :show]
   plug PartywaveWeb.CheckAuthorization, %{} when not action in [:index, :show]
 
-  def index(conn, _params) do
-    surfboards = Reviews.list_surfboards()
+  def index(conn, params) do
     categories = Reviews.list_categories()
-    render(conn, "index.html", surfboards: surfboards, categories: categories)
+    page =
+      Surfboard
+      |> preload([:shaper, :category])
+      |> order_by(desc: :released_on)
+      |> Partywave.Repo.paginate(params)
+    render(conn, "index.html", surfboards: page.entries, page: page, categories: categories)
   end
 
   def new(conn, _params) do

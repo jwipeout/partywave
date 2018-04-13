@@ -42,3 +42,5 @@ h2
           = rating_tooltip(gettext("surfers_rating_tooltip"))
 
         = reviews_average_rating(surfboard.reviews_average_rating)
+
+= pagination_links @conn, @page

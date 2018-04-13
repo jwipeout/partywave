@@ -1,6 +1,7 @@
 defmodule PartywaveWeb.SurfboardView do
   use PartywaveWeb, :view
 
+  import Scrivener.HTML
   import PartywaveWeb.SurfboardHelper
   import PartywaveWeb.DateHelper
   import PartywaveWeb.UserHelper
