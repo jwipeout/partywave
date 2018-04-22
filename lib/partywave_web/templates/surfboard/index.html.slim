@@ -1,6 +1,16 @@
 h2
   | Surfboards
 
+.search_form
+  .row
+    .col-md-6
+      = form_for @conn, surfboard_path(@conn, :index), [method: :get], fn f ->
+        .input-group
+          = search_input f, :query, class: "form-control", placeholder: "Search by model name"
+
+          .input-group-append
+            = submit "Search", class: "btn btn-outline-secondary"
+
 = for surfboard <- @surfboards do
   .row.surfboard_row
     .col-md-2

@@ -215,6 +215,13 @@ defmodule Partywave.Reviews do
       order_by: [desc: surfboard.released_on]
   end
 
+  def search_surfboards(query, search) do
+    wildcard_search = "%#{search}%"
+
+    from surfboard in query,
+    where: ilike(surfboard.model, ^wildcard_search)
+  end
+
   @doc """
   Gets a single surfboard.
 
