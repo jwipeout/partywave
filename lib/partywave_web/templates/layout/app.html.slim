@@ -9,6 +9,8 @@ html lang="en"
 
     meta content="width=device-width, initial-scale=1" name="viewport"
 
+    meta name="google" content="notranslate"
+
     = render_existing(@view_module, "meta/meta." <> @view_template, assigns) || \
     render(PartywaveWeb.LayoutView, "meta.html", assigns)
 
