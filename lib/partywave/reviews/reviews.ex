@@ -209,10 +209,18 @@ defmodule Partywave.Reviews do
       [%Surfboard{}, ...]
 
   """
-  def list_surfboards do
-    Repo.all from surfboard in Surfboard,
+  def list_surfboards(search) do
+    query =
+      from surfboard in Surfboard,
       preload: [:shaper, :category],
       order_by: [desc: surfboard.released_on]
+
+    if search do
+      from surfboard in query,
+      where: fragment("? @@ ?", surfboard.model, ^search)
+    else
+      query
+    end
   end
 
   def search_surfboards(query, search) do

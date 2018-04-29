@@ -13,12 +13,8 @@ defmodule PartywaveWeb.SurfboardController do
   def index(conn, params) do
     categories = Reviews.list_categories()
     query = params["query"]
-    wildcard_search = "%#{query}%"
     page =
-      Surfboard
-      |> where([surfboard], ilike(surfboard.model, ^wildcard_search))
-      |> preload([:shaper, :category])
-      |> order_by(desc: :released_on)
+      Reviews.list_surfboards(query)
       |> Partywave.Repo.paginate(params)
     render(conn, "index.html", surfboards: page.entries, page: page, categories: categories)
   end
