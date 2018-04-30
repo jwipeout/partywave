@@ -223,11 +223,13 @@ defmodule Partywave.Reviews do
     end
   end
 
-  def search_surfboards(query, search) do
-    wildcard_search = "%#{search}%"
-
-    from surfboard in query,
-    where: ilike(surfboard.model, ^wildcard_search)
+  def most_recent_surfboards do
+    Repo.all(
+      from surfboard in Surfboard,
+      preload: [:shaper, :category],
+      order_by: [desc: surfboard.released_on],
+      limit: 4
+    )
   end
 
   @doc """

@@ -113,14 +113,6 @@ defmodule PartywaveWeb.SurfboardView do
     "#{feet}' #{rem_inches}"
   end
 
-  def main_image(surfboard, :medium) do
-    PartywaveWeb.SurfboardImage.url({surfboard.image, surfboard}, :medium)
-  end
-
-  def main_image(surfboard) do
-    PartywaveWeb.SurfboardImage.url({surfboard.image, surfboard})
-  end
-
   def new_review(conn, assigns, nil) do
     content_tag :div do
       [

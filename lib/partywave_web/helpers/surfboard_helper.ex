@@ -49,4 +49,12 @@ defmodule PartywaveWeb.SurfboardHelper do
     # span.rating_tooltip
     #   i.fa.fa-question-circle-o aria-hidden="true" data-toggle="tooltip" data-placement="top" title="Score given by PartyWave"
   end
+
+  def main_image(surfboard, :medium) do
+    PartywaveWeb.SurfboardImage.url({surfboard.image, surfboard}, :medium)
+  end
+
+  def main_image(surfboard) do
+    PartywaveWeb.SurfboardImage.url({surfboard.image, surfboard})
+  end
 end
