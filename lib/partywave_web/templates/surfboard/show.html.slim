@@ -9,6 +9,12 @@
 
       .card-body
         h6
+          | Released On
+
+        .surboard_details
+          = format_date(@surfboard.released_on)
+
+        h6
           | Shaper
 
         .surboard_details

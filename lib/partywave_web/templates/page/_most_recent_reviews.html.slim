@@ -1,0 +1,31 @@
+h4
+  = "Most recent reviews "
+
+  small
+    = link("View all", to: surfboard_path(@conn, :index))
+
+.row
+  = for review <- @most_recent_reviews do
+    .col-md-3
+      p
+        = main_image(review.surfboard, :medium) \
+        |> img_tag(class: "img-fluid") \
+        |> link(to: review_path(@conn, :index, surfboard_id: review.surfboard))
+
+      p
+        span
+          = review.surfboard.model
+
+        span.spacer
+          | |
+
+        span
+          = review.surfboard.shaper.name
+
+      p
+        .text-muted
+          = format_date(review.inserted_at)
+
+        = review.user.name
+
+        = reviews_average_rating(review.rating)

@@ -1,0 +1,29 @@
+h4
+  = "Most recent surfboards "
+
+  small
+    = link("View all", to: surfboard_path(@conn, :index))
+
+.row
+  = for surfboard <- @most_recent_surfboards do
+    .col-md-3
+      p
+        = main_image(surfboard, :medium) \
+        |> img_tag(class: "img-fluid") \
+        |> link(to: surfboard_path(@conn, :show, surfboard))
+
+      p
+        span
+          = surfboard.model
+
+        span.spacer
+          | |
+
+        span
+          = surfboard.shaper.name
+
+      p
+        .text-muted
+          = format_date(surfboard.released_on)
+
+        = reviews_count(surfboard.reviews_count)

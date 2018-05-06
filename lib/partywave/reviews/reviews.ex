@@ -342,6 +342,12 @@ defmodule Partywave.Reviews do
     order_by: [desc: review.inserted_at]
   end
 
+  def most_recent_reviews do
+    Repo.all from review in Review,
+    preload: [:user, surfboard: :shaper],
+    order_by: [desc: review.inserted_at]
+  end
+
   @doc """
   Gets a single review.
 

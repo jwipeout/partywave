@@ -3,4 +3,5 @@ defmodule PartywaveWeb.PageView do
 
   import PartywaveWeb.SurfboardHelper
   import PartywaveWeb.DateHelper
+  import PartywaveWeb.UserHelper
 end
