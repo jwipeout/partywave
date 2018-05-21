@@ -210,14 +210,26 @@ defmodule Partywave.Reviews do
 
   """
   def list_surfboards(search) do
+    model_name = search["model_name"]
+    shaper_id = search["shaper_id"]
+
     query =
       from surfboard in Surfboard,
       preload: [:shaper, :category],
       order_by: [desc: surfboard.released_on]
 
-    if search do
-      from surfboard in query,
-      where: fragment("? @@ ?", surfboard.model, ^search)
+    if model_name != "" && model_name do
+      query =
+        from surfboard in query,
+        where: fragment("? @@ ?", surfboard.model, ^model_name)
+    else
+      query
+    end
+
+    if shaper_id != "" && shaper_id do
+      query =
+        from surfboard in query,
+        where: surfboard.shaper_id == ^shaper_id
     else
       query
     end

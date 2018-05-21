@@ -1,0 +1,17 @@
+.search_form
+  h5
+    | Search filter
+
+  = form_for @conn, surfboard_path(@conn, :index), [method: :get], fn f ->
+    .form-group
+      = search_input f, :model_name, class: "form-control", placeholder: "Search by model name"
+
+    .form-group
+      = select f,
+      :shaper_id,
+      Enum.map(@shapers, &{&1.name, &1.id}),
+      class: "form-control",
+      prompt: "Search by shaper"
+
+    .form-group
+      = submit "Search", class: "btn btn-sm btn-outline-secondary"

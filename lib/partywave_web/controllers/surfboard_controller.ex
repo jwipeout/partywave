@@ -12,11 +12,18 @@ defmodule PartywaveWeb.SurfboardController do
 
   def index(conn, params) do
     categories = Reviews.list_categories()
-    query = params["query"]
+    shapers = Reviews.list_shapers()
     page =
-      Reviews.list_surfboards(query)
+      Reviews.list_surfboards(params)
       |> Partywave.Repo.paginate(params)
-    render(conn, "index.html", surfboards: page.entries, page: page, categories: categories)
+    render(
+      conn,
+      "index.html",
+      surfboards: page.entries,
+      page: page,
+      categories: categories,
+      shapers: shapers
+    )
   end
 
   def new(conn, _params) do

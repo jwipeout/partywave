@@ -1,56 +1,51 @@
 h2
   | Surfboards
 
-.search_form
-  .row
-    .col-md-6
-      = form_for @conn, surfboard_path(@conn, :index), [method: :get], fn f ->
-        .input-group
-          = search_input f, :query, class: "form-control", placeholder: "Search by model name"
+.row
+  .col-sm-3
+    = render "_search_form.html", conn: @conn, shapers: @shapers
 
-          .input-group-append
-            = submit "Search", class: "btn btn-outline-secondary"
+  .col-sm-9
+    = for surfboard <- @surfboards do
+      .row.surfboard_row
+        .col-md-2
+          = main_image(surfboard, :medium) \
+          |> img_tag(class: "img-fluid") \
+          |> link(to: surfboard_path(@conn, :show, surfboard))
 
-= for surfboard <- @surfboards do
-  .row.surfboard_row
-    .col-md-2
-      = main_image(surfboard, :medium) \
-      |> img_tag(class: "img-fluid") \
-      |> link(to: surfboard_path(@conn, :show, surfboard))
+        .col-md-4
+          h3
+            = link surfboard.model,
+            to: surfboard_path(@conn, :show, surfboard)
 
-    .col-md-4
-      h3
-        = link surfboard.model,
-        to: surfboard_path(@conn, :show, surfboard)
+          h6
+            = link surfboard.shaper.name,
+            to: surfboard_path(@conn, :show, surfboard)
 
-      h6
-        = link surfboard.shaper.name,
-        to: surfboard_path(@conn, :show, surfboard)
+          p.text-muted
+            = format_date(surfboard.released_on)
 
-      p.text-muted
-        = format_date(surfboard.released_on)
+          p
+            = reviews_count(surfboard.reviews_count)
 
-      p
-        = reviews_count(surfboard.reviews_count)
+        .col-md-3
+          h5
+            .score
+              span
+                | PartyWave Score
 
-    .col-md-3
-      h5
-        .score
-          span
-            | PartyWave Score
+              = rating_tooltip(gettext("our_rating_tooltip"))
 
-          = rating_tooltip(gettext("our_rating_tooltip"))
+            = our_rating(surfboard.our_rating)
 
-        = our_rating(surfboard.our_rating)
+        .col-md-3
+          h5
+            .score
+              span
+                | Surfers Score
 
-    .col-md-3
-      h5
-        .score
-          span
-            | Surfers Score
+              = rating_tooltip(gettext("surfers_rating_tooltip"))
 
-          = rating_tooltip(gettext("surfers_rating_tooltip"))
+            = reviews_average_rating(surfboard.reviews_average_rating)
 
-        = reviews_average_rating(surfboard.reviews_average_rating)
-
-= pagination_links @conn, @page
+    = pagination_links @conn, @page
