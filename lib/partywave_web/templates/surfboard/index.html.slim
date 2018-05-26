@@ -48,4 +48,4 @@ h2
 
             = reviews_average_rating(surfboard.reviews_average_rating)
 
-    = pagination_links @conn, @page
+    = pagination_links @conn, @page, shaper_id: @shaper_id, model_name: @model_name

@@ -22,7 +22,9 @@ defmodule PartywaveWeb.SurfboardController do
       surfboards: page.entries,
       page: page,
       categories: categories,
-      shapers: shapers
+      shapers: shapers,
+      shaper_id: params["shaper_id"],
+      model_name: params["model_name"]
     )
   end
 
