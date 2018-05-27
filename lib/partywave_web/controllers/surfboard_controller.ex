@@ -13,8 +13,9 @@ defmodule PartywaveWeb.SurfboardController do
   def index(conn, params) do
     categories = Reviews.list_categories()
     shapers = Reviews.list_shapers()
+    search_params = params["search"] || %{}
     page =
-      Reviews.list_surfboards(params)
+      Reviews.list_surfboards(search_params)
       |> Partywave.Repo.paginate(params)
     render(
       conn,
@@ -23,8 +24,7 @@ defmodule PartywaveWeb.SurfboardController do
       page: page,
       categories: categories,
       shapers: shapers,
-      shaper_id: params["shaper_id"],
-      model_name: params["model_name"]
+      search: search_params
     )
   end
 

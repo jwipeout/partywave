@@ -2,7 +2,7 @@
   h5
     | Search filter
 
-  = form_for @conn, surfboard_path(@conn, :index), [method: :get], fn f ->
+  = form_for @conn, surfboard_path(@conn, :index), [method: :get, as: :search], fn f ->
     .form-group
       = search_input f, :model_name, class: "form-control", placeholder: "Search by model name"
 
