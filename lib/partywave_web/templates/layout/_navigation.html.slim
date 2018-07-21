@@ -12,3 +12,5 @@ nav.navbar.navbar-expand-lg.navbar-dark.bg-dark
 
       ul.navbar-nav
         = sign_in_links(Coherence.current_user(@conn), @conn)
+
+= render "_announcement.html", conn: @conn
