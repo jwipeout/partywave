@@ -14,7 +14,7 @@
     |  else that has left a review.
 
   p
-    = link "Surfboard Reviews", to: surfboard_path(@conn, :index), class: "btn btn-primary"
+    = link "Sign up", to: registration_path(@conn, :new), class: "btn btn-primary"
 
 = render "_most_recent_surfboards.html",
 conn: @conn,
